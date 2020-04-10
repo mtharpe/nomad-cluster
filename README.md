@@ -1,5 +1,25 @@
 # Nomad Cluster
-This is an example of how to spin up a Nomad Cluster with Consul Networking
+This is an example of how to spin up a Nomad Cluster with Consul Networking. The example can easily be ported to physical servers or other public clouds. The magic all happens in the **templates > hashistack-init.sh** file.
+
+## Using Physical Servers
+
+### Internet Available
+No Modifications to the hashistack-init.sh file
+
+### Air Gapped
+Comment out the following lines:
+```bash
+42 curl --silent --remote-name https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
+```
+```bash
+120 curl --silent --remote-name https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
+```
+
+Download the binaries for Consul and Nomad, keeping the naming scheme above.
+
+Copy the binaries and hashistack-init.sh file to the temp directory of the target server
+
+## Using Google Cloud Platform and Terraform
 
 **Before you begin, please make sure you have an SSH key pair that allows you to SSH into the environment virtual machines. You will need the private key to perform some setup via Terraform.**
 
