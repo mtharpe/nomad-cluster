@@ -28,7 +28,7 @@ done
 
 #   Utils
 echo "Updating and Installing Utilities"
-#sudo yum update -y
+sudo yum update -y
 sudo yum install unzip -y
 sudo yum install java -y
 
