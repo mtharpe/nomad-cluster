@@ -30,6 +30,9 @@ Comment out the following lines in the hashistack-init.sh file:
 ```bash
 120 #curl --silent --remote-name https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
 ```
+```bash
+215 #sudo yum install bind bind-utils -y
+```
 
 Manually install unzip, java, bind and bind-utils on the target servers.
 
