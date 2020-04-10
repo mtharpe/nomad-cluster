@@ -3,21 +3,27 @@ This is an example of how to spin up a Nomad Cluster with Consul Networking. The
 
 ## Using Physical Servers
 
+### Preparation
+* [Environment Prerequisites](https://nomadproject.io/docs/install/production/requirements/)
+* [Installation](https://nomadproject.io/docs/install/production/requirements/)
+* Ports that need to be open - 
+* Have all of you Nomad Server IPs. These may be seperate from your clients.
+
 ### Internet Available
 No Modifications to the hashistack-init.sh file
 
 ### Air Gapped
 Comment out the following lines:
 ```bash
-42 curl --silent --remote-name https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
+42 #curl --silent --remote-name https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
 ```
 ```bash
-120 curl --silent --remote-name https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
+120 #curl --silent --remote-name https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
 ```
 
-Download the binaries for Consul and Nomad, keeping the naming scheme above.
+Download the binaries for [Consul](https://www.consul.io/downloads.html) and [Nomad](https://nomadproject.io/downloads/), keeping the naming scheme above.
 
-Copy the binaries and hashistack-init.sh file to the temp directory of the target server
+Copy the binaries and hashistack-init.sh file to the /tmp directory of the target RHEL 7 server.
 
 ## Using Google Cloud Platform and Terraform
 
