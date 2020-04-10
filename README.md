@@ -47,8 +47,15 @@ Run the script with these mandatory options:
 * -r - A list of Nomad server ip strings. Example : '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"'
 * -s - The Nomad server integer count
 
-Server Example : sudo /tmp/hashistack-init.sh -d 'demo' -c '1.7.2' -n '0.11.0' -a 'server' -r '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"' -s 3"
-Client Example : sudo /tmp/hashistack-init.sh -d 'demo' -c '1.7.2' -n '0.11.0' -a 'client' -r '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"' -s 3"
+Server Example :
+```bash
+sudo /tmp/hashistack-init.sh -d 'demo' -c '1.7.2' -n '0.11.0' -a 'server' -r '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"' -s 3"
+```
+
+Client Example :
+```bash
+sudo /tmp/hashistack-init.sh -d 'demo' -c '1.7.2' -n '0.11.0' -a 'client' -r '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"' -s 3"
+```
 
 Pull up the UI:
 * Consul - http://<server ip>:8500
