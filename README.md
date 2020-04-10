@@ -6,7 +6,10 @@ This is an example of how to spin up a Nomad Cluster with Consul Networking. The
 ### Preparation
 * [Environment Prerequisites](https://nomadproject.io/docs/install/production/requirements/)
 * [Deployment Guide](https://nomadproject.io/docs/install/production/deployment-guide/)
-* Ports that need to be open - 
+* Ports that need to be open
+  - Nomad 4646, 4647, 4648
+  - Consul 8300, 8301, 8302, 8500, 8600
+  - DNS 53
 * Have all of you Nomad Server IPs. These may be seperate from your clients.
 
 ### Internet Available
@@ -58,8 +61,8 @@ sudo /tmp/hashistack-init.sh -d 'demo' -c '1.7.2' -n '0.11.0' -a 'client' -r '\"
 ```
 
 Pull up the UI:
-* Consul - http://<server ip>:8500
-* Nomad - http://<server ip>:4646
+* Consul - http://server-ip:8500
+* Nomad - http://server-ip:4646
 
 ## Using Google Cloud Platform and Terraform
 
