@@ -5,15 +5,22 @@ This is an example of how to spin up a Nomad Cluster with Consul Networking. The
 
 ### Preparation
 * [Environment Prerequisites](https://nomadproject.io/docs/install/production/requirements/)
-* [Installation](https://nomadproject.io/docs/install/production/requirements/)
+* [Deployment Guide](https://nomadproject.io/docs/install/production/deployment-guide/)
 * Ports that need to be open - 
 * Have all of you Nomad Server IPs. These may be seperate from your clients.
 
 ### Internet Available
 No Modifications to the hashistack-init.sh file
 
+Copy the hashistack-init.sh file to the /tmp directory of the target RHEL 7 server.
+
 ### Air Gapped
-Comment out the following lines:
+Comment out the following lines in the hashistack-init.sh file:
+```bash
+31 #sudo yum update -y
+32 #sudo yum install unzip -y
+33 #sudo yum install java -y
+```
 ```bash
 42 #curl --silent --remote-name https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
 ```
@@ -21,9 +28,31 @@ Comment out the following lines:
 120 #curl --silent --remote-name https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
 ```
 
+Manually install unzip and java on the target servers.
+
 Download the binaries for [Consul](https://www.consul.io/downloads.html) and [Nomad](https://nomadproject.io/downloads/), keeping the naming scheme above.
 
 Copy the binaries and hashistack-init.sh file to the /tmp directory of the target RHEL 7 server.
+
+### Installation
+Make the script executable by running
+```bash
+chmod +x /tmp/hashistack-init.sh
+```
+Run the script with these mandatory options:
+* -d - The name of the data center
+* -c - The Consul version
+* -n - The Nomad version
+* -a - The type of agent. Either "client" or "server"
+* -r - A list of Nomad server ip strings. Example : '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"'
+* -s - The Nomad server integer count
+
+Server Example : sudo /tmp/hashistack-init.sh -d 'demo' -c '1.7.2' -n '0.11.0' -a 'server' -r '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"' -s 3"
+Client Example : sudo /tmp/hashistack-init.sh -d 'demo' -c '1.7.2' -n '0.11.0' -a 'client' -r '\"1.1.1.1\", \"2.2.2.2\", \"3.3.3.3\"' -s 3"
+
+Pull up the UI:
+* Consul - http://<server ip>:8500
+* Nomad - http://<server ip>:4646
 
 ## Using Google Cloud Platform and Terraform
 
